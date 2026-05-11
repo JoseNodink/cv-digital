@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>José Alberto Delicado — CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0D1117;
+      --surface:      #161B22;
+      --surface-2:    #1C2128;
+      --border:       rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(255, 255, 255, 0.16);
+      --text:         #E6EDF3;
+      --muted:        #8B949E;
+      --muted-2:      #6E7681;
+      --teal:         #0C9FA5;
+      --teal-dark:    #045066;
+      --teal-light:   #3DBFC6;
+      --teal-glow:    rgba(12, 159, 165, 0.15);
+      --teal-glow2:   rgba(12, 159, 165, 0.08);
+      --f-display:    'Plus Jakarta Sans', sans-serif;
+      --f-body:       'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--f-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 6rem 2rem 5rem;
+    }
+
+    /* Aurora blobs */
+    .aurora {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      opacity: .55;
+    }
+    .aurora--1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(12,159,165,.35) 0%, transparent 70%);
+      top: -120px; left: -100px;
+    }
+    .aurora--2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(4,80,102,.4) 0%, transparent 70%);
+      bottom: -80px; right: 10%;
+    }
+    .aurora--3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(61,191,198,.2) 0%, transparent 70%);
+      top: 40%; left: 55%;
+    }
+
+    /* Subtle grid overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: end;
+    }
+
+    .hero__label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--teal-glow2);
+      border: 1px solid rgba(12,159,165,.25);
+      border-radius: 9999px;
+      padding: .3rem .9rem;
+      font-family: var(--f-body);
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--teal-light);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__name {
+      font-family: var(--f-display);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      line-height: 1.0;
+      margin-bottom: .75rem;
+    }
+
+    .hero__name span {
+      display: block;
+      background: linear-gradient(135deg, #E6EDF3 0%, var(--teal-light) 60%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero__title {
+      font-family: var(--f-display);
+      font-size: clamp(1rem, 2vw, 1.375rem);
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: -.01em;
+    }
+
+    .hero__title strong {
+      color: var(--teal-light);
+      font-weight: 600;
+    }
+
+    .hero__bio {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero__contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .625rem;
+    }
+
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: .4rem 1rem;
+      font-size: .8125rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: border-color .2s, color .2s;
+    }
+    .contact-pill:hover { border-color: var(--teal); color: var(--teal-light); }
+    .contact-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* Side info block */
+    .hero__side {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+      align-items: flex-end;
+      padding-bottom: .25rem;
+    }
+
+    .hero__badge {
+      background: var(--teal-glow);
+      border: 1px solid rgba(12,159,165,.3);
+      border-radius: 14px;
+      padding: 1.125rem 1.375rem;
+      text-align: right;
+      min-width: 180px;
+    }
+    .hero__badge-num {
+      font-family: var(--f-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--teal-light);
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+    .hero__badge-lbl {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: .2rem;
+    }
+
+    .hero__available {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: .4rem 1rem;
+      font-size: .8rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #3FB950;
+      box-shadow: 0 0 6px #3FB950;
+      flex-shrink: 0;
+    }
+
+    /* ─── LAYOUT ─── */
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .divider {
+      max-width: 1080px;
+      margin: 0 auto;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .sec-label {
+      font-family: var(--f-body);
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .75rem;
+      display: block;
+    }
+
+    .sec-title {
+      font-family: var(--f-display);
+      font-size: clamp(1.625rem, 3vw, 2.25rem);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── PERFIL ─── */
+    .perfil-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .perfil-text p {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      line-height: 1.78;
+      margin-bottom: 1.125rem;
+    }
+    .perfil-text p:last-child { margin-bottom: 0; }
+
+    .perfil-aside { display: flex; flex-direction: column; gap: .875rem; }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem 1.375rem;
+    }
+
+    .info-card__label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .5rem;
+    }
+
+    .info-card__value {
+      font-family: var(--f-display);
+      font-size: .9375rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .info-card__sub {
+      font-size: .8125rem;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    /* ─── EXPERIENCIA ─── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 8px; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--teal), rgba(12,159,165,.1));
+    }
+
+    .tl-item {
+      position: relative;
+      padding-bottom: 3rem;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -2.3125rem;
+      top: 7px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 8px var(--teal);
+    }
+
+    .tl-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: .875rem;
+      flex-wrap: wrap;
+    }
+
+    .tl-date {
+      display: inline-block;
+      background: var(--teal-glow2);
+      border: 1px solid rgba(12,159,165,.2);
+      border-radius: 9999px;
+      padding: .2rem .75rem;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--teal-light);
+      white-space: nowrap;
+    }
+
+    .tl-role {
+      font-family: var(--f-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: .15rem;
+    }
+
+    .tl-company {
+      font-size: .9rem;
+      color: var(--teal-light);
+      font-weight: 600;
+      margin-bottom: .875rem;
+    }
+
+    .tl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.375rem 1.5rem;
+    }
+
+    .tl-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+
+    .tl-list li {
+      font-size: .9375rem;
+      color: var(--muted);
+      line-height: 1.65;
+      padding-left: 1.375rem;
+      position: relative;
+    }
+
+    .tl-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: .8rem;
+      top: .18rem;
+    }
+
+    .tl-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── PROYECTOS ─── */
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.875rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      transition: border-color .2s, background .2s;
+    }
+    .project-card:hover {
+      border-color: rgba(12,159,165,.3);
+      background: var(--surface-2);
+    }
+
+    .proj-num {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: .4rem;
+    }
+
+    .project-card h3 {
+      font-family: var(--f-display);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      margin-bottom: .4rem;
+    }
+
+    .proj-ctx {
+      font-size: .875rem;
+      color: var(--muted-2);
+      font-style: italic;
+      margin-bottom: .75rem;
+      line-height: 1.55;
+    }
+
+    .proj-what {
+      font-size: .9375rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: .875rem;
+    }
+
+    .proj-result {
+      font-size: .875rem;
+      color: var(--teal-light);
+      font-weight: 600;
+    }
+
+    .proj-tags {
+      display: flex;
+      flex-direction: column;
+      gap: .4rem;
+      align-items: flex-end;
+      flex-shrink: 0;
+      padding-top: 1.75rem;
+    }
+
+    /* ─── HABILIDADES ─── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.125rem;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.375rem 1.5rem;
+    }
+
+    .skill-group__title {
+      font-family: var(--f-display);
+      font-size: .8125rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    /* ─── FORMACIÓN ─── */
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.375rem 1.5rem;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      transition: border-color .2s;
+    }
+    .edu-card:hover { border-color: var(--border-hover); }
+
+    .edu-year {
+      font-family: var(--f-display);
+      font-size: .8125rem;
+      font-weight: 700;
+      color: var(--teal);
+      padding-top: .125rem;
+    }
+
+    .edu-card h4 {
+      font-family: var(--f-display);
+      font-size: .9375rem;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      margin-bottom: .2rem;
+    }
+
+    .edu-card p {
+      font-size: .875rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ─── SHARED COMPONENTS ─── */
+    .tag {
+      display: inline-block;
+      background: var(--teal-glow2);
+      color: var(--teal-light);
+      border: 1px solid rgba(12,159,165,.2);
+      border-radius: 6px;
+      padding: .2rem .6rem;
+      font-size: .75rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tag--neutral {
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      border-color: var(--border);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      font-size: .8125rem;
+      color: var(--muted-2);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    footer a:hover { color: var(--teal-light); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 840px) {
+      .hero__inner { grid-template-columns: 1fr; }
+      .hero__side { flex-direction: row; align-items: center; justify-content: flex-start; flex-wrap: wrap; }
+      .perfil-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-card { grid-template-columns: 1fr; }
+      .proj-tags { flex-direction: row; align-items: flex-start; padding-top: 0; }
+      .edu-card { grid-template-columns: 1fr; gap: .5rem; }
+      .section { padding: 4rem 1.25rem; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      footer { padding: 1.5rem 1.25rem; flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 560px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero__contacts { gap: .5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="aurora aurora--1"></div>
+  <div class="aurora aurora--2"></div>
+  <div class="aurora aurora--3"></div>
+
+  <div class="hero__inner">
+    <div>
+      <div class="hero__label">
+        <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="12" height="12"><circle cx="8" cy="8" r="8"/></svg>
+        Curriculum Vitae · 2026
+      </div>
+
+      <h1 class="hero__name">
+        <span>José Alberto</span>
+        <span>Delicado</span>
+      </h1>
+
+      <p class="hero__title">
+        Fundador de <strong>Nodink Digital</strong> · Automatizaciones · IA · Diseño Web
+      </p>
+
+      <p class="hero__bio">
+        Técnico de sistemas con más de 10 años en entornos tecnológicos, reconvertido en especialista en automatizaciones e inteligencia artificial para pymes. Construyo procesos que funcionan solos para que los negocios dejen de depender de la presencia constante de su dueño.
+      </p>
+
+      <div class="hero__contacts">
+        <a href="mailto:jose@nodinkdigital.es" class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          jose@nodinkdigital.es
+        </a>
+        <a href="tel:+34666751545" class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.05 2.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          +34 666 751 545
+        </a>
+        <a href="https://nodinkdigital.com" target="_blank" class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          nodinkdigital.com
+        </a>
+        <a href="https://www.linkedin.com/in/jose-alberto-nodink-digital/" target="_blank" class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <span class="contact-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Almansa, Albacete
+        </span>
+      </div>
+    </div>
+
+    <div class="hero__side">
+      <div class="hero__badge">
+        <div class="hero__badge-num">+10</div>
+        <div class="hero__badge-lbl">años en<br>entornos tech</div>
+      </div>
+      <div class="hero__badge">
+        <div class="hero__badge-num">3</div>
+        <div class="hero__badge-lbl">sistemas IA<br>construidos</div>
+      </div>
+      <div class="hero__available">
+        <span class="dot"></span>
+        Disponible para proyectos
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PERFIL ════════════════════════════════════════════════════════ -->
+<section class="section" id="perfil">
+  <span class="sec-label">Perfil profesional</span>
+  <div class="perfil-grid">
+    <div class="perfil-text">
+      <h2 class="sec-title">Sobre mí</h2>
+      <p>Soy José Alberto Delicado, fundador de Nodink Digital. Empecé como técnico de sistemas —redes, servidores Linux, infraestructura— y con los años fui incorporando diseño web, SEO, marketing digital y finalmente automatizaciones e inteligencia artificial. No llegué aquí por tendencia: llegué porque es donde el impacto real en negocios pequeños es mayor.</p>
+      <p>Hoy diseño sistemas que conectan las piezas de un negocio: captación de leads, respuestas automáticas, gestión de clientes, seguimiento de pedidos. Todo fluyendo sin que nadie tenga que intervenir cada vez que algo ocurre. Mi base técnica me permite construir soluciones que funcionan de verdad, no demos que impresionan en una reunión y fallan a la semana.</p>
+      <p>Trabajo con autónomos y pymes en Almansa y la provincia de Albacete que quieren digitalizar sus procesos sin complicaciones. También colaboro con agencias que necesitan un perfil técnico especializado en automatizaciones e IA para sus proyectos.</p>
+    </div>
+
+    <div class="perfil-aside">
+      <div class="info-card">
+        <div class="info-card__label">Ubicación</div>
+        <div class="info-card__value">Almansa, Albacete</div>
+        <div class="info-card__sub">Castilla-La Mancha, España</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card__label">Situación actual</div>
+        <div class="info-card__value">Fundador — Nodink Digital</div>
+        <div class="info-card__sub">Profesional independiente · desde abr. 2026</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card__label">Disponibilidad</div>
+        <div class="info-card__value">Proyectos y colaboraciones</div>
+        <div class="info-card__sub">Pymes · Autónomos · Agencias</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card__label">Idiomas</div>
+        <div class="info-card__value">Español — Nativo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ EXPERIENCIA ═══════════════════════════════════════════════════ -->
+<section class="section" id="experiencia">
+  <span class="sec-label">Trayectoria profesional</span>
+  <h2 class="sec-title">Experiencia</h2>
+
+  <div class="timeline">
+
+    <!-- Nodink -->
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <p class="tl-role">Fundador &amp; Especialista en Automatizaciones e IA</p>
+          <p class="tl-company">Nodink Digital · Almansa, España · Híbrido</p>
+        </div>
+        <span class="tl-date">Abr. 2026 — Actualidad</span>
+      </div>
+      <div class="tl-card">
+        <ul class="tl-list">
+          <li>Fundé Nodink Digital para ofrecer automatizaciones, IA y diseño web a autónomos y pymes que quieren operar sin depender de su presencia constante.</li>
+          <li>Diseño flujos de trabajo personalizados mediante herramientas no-code, eliminando tareas manuales repetitivas de las operaciones diarias de mis clientes.</li>
+          <li>Construí un dashboard automático de presupuestos integrado con la API de ChatGPT, reduciendo el tiempo de gestión comercial y estandarizando la respuesta al cliente.</li>
+          <li>Desarrollé un sistema OCR que captura tarjetas de contacto y registra los datos directamente en el CRM, eliminando la entrada manual de leads.</li>
+          <li>Implementé un asistente IA para redactar y adaptar documentos legales, agilizando procesos internos sin necesidad de conocimientos técnicos por parte del cliente.</li>
+          <li>Integro herramientas de email marketing y CRM en flujos automatizados para mejorar el seguimiento de leads sin intervención manual.</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">n8n</span>
+          <span class="tag">Make</span>
+          <span class="tag">ChatGPT API</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Elementor</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Email marketing</span>
+          <span class="tag">Chatbots IA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Diseñador web -->
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <p class="tl-role">Diseñador Web &amp; Automatizaciones</p>
+          <p class="tl-company">Javier Navalón Rico · Almansa, España · Híbrido</p>
+        </div>
+        <span class="tl-date">Mar. 2024 — Actualidad</span>
+      </div>
+      <div class="tl-card">
+        <ul class="tl-list">
+          <li>Maqueto webs orientadas a conversión con Elementor y WordPress, adaptando cada diseño a los objetivos de venta del negocio.</li>
+          <li>Implemento automatizaciones en flujos de captación y atención de clientes, conectando formularios, CRM y notificaciones sin intervención manual.</li>
+          <li>Aplico SEO on-page y GEO local para mejorar la visibilidad en búsquedas locales, posicionando el negocio frente a la competencia en su zona geográfica.</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">WordPress</span>
+          <span class="tag">Elementor</span>
+          <span class="tag">Make</span>
+          <span class="tag">n8n</span>
+          <span class="tag">Zapier</span>
+          <span class="tag">SEO on-page</span>
+          <span class="tag">GEO local</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Técnico -->
+    <div class="tl-item">
+      <div class="tl-header">
+        <div>
+          <p class="tl-role">Técnico de Sistemas Informáticos</p>
+          <p class="tl-company">Trade Contract SL · Almansa, España · Presencial</p>
+        </div>
+        <span class="tl-date">2015 — 2017</span>
+      </div>
+      <div class="tl-card">
+        <ul class="tl-list">
+          <li>Desplegué y mantuve infraestructura de red LAN y servidores, garantizando la operatividad continua de los sistemas de la empresa.</li>
+          <li>Resolví incidencias de hardware y software en entornos Linux y Windows, minimizando tiempos de parada operativa.</li>
+          <li>Administré servidores Linux en local, sentando la base técnica para la gestión posterior de entornos de automatización y despliegue.</li>
+        </ul>
+        <div class="tl-stack">
+          <span class="tag">Linux</span>
+          <span class="tag">Windows Server</span>
+          <span class="tag">Redes LAN</span>
+          <span class="tag">Soporte técnico</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROYECTOS ══════════════════════════════════════════════════════ -->
+<section class="section" id="proyectos">
+  <span class="sec-label">Proyectos destacados</span>
+  <h2 class="sec-title">Lo que he construido</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div>
+        <p class="proj-num">01 · Automatización</p>
+        <h3>Dashboard automático de presupuestos con IA</h3>
+        <p class="proj-ctx">El tiempo de gestión comercial se perdía en tareas repetitivas sin estandarizar.</p>
+        <p class="proj-what">Construí un dashboard integrado con la API de ChatGPT que genera, estandariza y prepara presupuestos sin intervención manual. Conecté el flujo con el CRM para que cada presupuesto quedara registrado automáticamente y el seguimiento no dependiera de recordarlo a mano.</p>
+        <p class="proj-result">→ Respuesta comercial inmediata · Cero variabilidad en el formato · Seguimiento automático</p>
+      </div>
+      <div class="proj-tags">
+        <span class="tag">ChatGPT API</span>
+        <span class="tag">n8n</span>
+        <span class="tag">CRM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <p class="proj-num">02 · Automatización</p>
+        <h3>Sistema OCR de tarjetas de contacto al CRM</h3>
+        <p class="proj-ctx">Los nuevos leads tardaban en entrar al sistema por la entrada manual de datos.</p>
+        <p class="proj-what">Desarrollé un sistema que captura tarjetas de contacto mediante OCR y vuelca los datos directamente en el CRM, sin teclear nada. Diseñé la lógica para que el contacto quedara categorizado y asignado a una secuencia de seguimiento de forma automática desde el primer momento.</p>
+        <p class="proj-result">→ Cero entrada manual · Lead al pipeline en segundos · Seguimiento activado al instante</p>
+      </div>
+      <div class="proj-tags">
+        <span class="tag">OCR</span>
+        <span class="tag">n8n</span>
+        <span class="tag">CRM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div>
+        <p class="proj-num">03 · Inteligencia Artificial</p>
+        <h3>Asistente IA para redacción de documentos legales</h3>
+        <p class="proj-ctx">La redacción y adaptación de documentos dependía de una sola persona y consumía horas que no sobraban.</p>
+        <p class="proj-what">Implementé un asistente de IA capaz de redactar, adaptar y revisar documentos según el contexto del cliente. Trabajé la ingeniería de prompts para que el output fuera preciso y usable directamente, sin revisión exhaustiva. El proceso quedó al alcance de cualquier miembro del equipo sin formación técnica.</p>
+        <p class="proj-result">→ De horas a minutos · Accesible para todo el equipo · Sin dependencia de perfil técnico</p>
+      </div>
+      <div class="proj-tags">
+        <span class="tag">ChatGPT API</span>
+        <span class="tag">Prompt Eng.</span>
+        <span class="tag">Make</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ HABILIDADES ════════════════════════════════════════════════════ -->
+<section class="section" id="habilidades">
+  <span class="sec-label">Competencias técnicas</span>
+  <h2 class="sec-title">Habilidades</h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group__title">⚡ Automatización</div>
+      <div class="skill-tags">
+        <span class="tag">n8n</span>
+        <span class="tag">Make</span>
+        <span class="tag">Zapier</span>
+        <span class="tag">Flujos no-code</span>
+        <span class="tag">Integración de APIs</span>
+        <span class="tag">Webhooks</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group__title">🤖 Inteligencia Artificial</div>
+      <div class="skill-tags">
+        <span class="tag">ChatGPT API</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Agentes IA</span>
+        <span class="tag">Chatbots</span>
+        <span class="tag">OCR</span>
+        <span class="tag">IA generativa</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group__title">🌐 Diseño Web</div>
+      <div class="skill-tags">
+        <span class="tag">WordPress</span>
+        <span class="tag">Elementor</span>
+        <span class="tag">HTML5</span>
+        <span class="tag">WooCommerce</span>
+        <span class="tag">Landing pages</span>
+        <span class="tag">Responsive</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group__title">📈 Marketing Digital</div>
+      <div class="skill-tags">
+        <span class="tag">SEO on-page</span>
+        <span class="tag">GEO local</span>
+        <span class="tag">Google Business</span>
+        <span class="tag">Email marketing</span>
+        <span class="tag">Google Analytics</span>
+        <span class="tag">CRM</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group__title">🖥 Sistemas</div>
+      <div class="skill-tags">
+        <span class="tag">Linux</span>
+        <span class="tag">Windows Server</span>
+        <span class="tag">Redes LAN</span>
+        <span class="tag">Soporte técnico</span>
+        <span class="tag">Servidores</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group__title">🔗 Integraciones</div>
+      <div class="skill-tags">
+        <span class="tag">APIs REST</span>
+        <span class="tag">Apigee</span>
+        <span class="tag">Webhooks</span>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">Dashboards</span>
+        <span class="tag">Lead automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FORMACIÓN ══════════════════════════════════════════════════════ -->
+<section class="section" id="formacion">
+  <span class="sec-label">Formación académica</span>
+  <h2 class="sec-title">Educación</h2>
+
+  <div class="edu-list">
+    <div class="edu-card">
+      <div class="edu-year">2025 – 2026</div>
+      <div>
+        <h4>Plan Dual de Marketing Digital</h4>
+        <p>Fondo Europeo · Castilla-La Mancha<br>SEO, automatización, no-code / low-code, IA generativa, agentes IA, chatbots, CRM, landing pages, email marketing, Google Analytics, integración de sistemas.</p>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2006 – 2008</div>
+      <div>
+        <h4>ASIR — Administración de Sistemas Informáticos en Red</h4>
+        <p>I.E.S. Escultor José Luis Sánchez · Almansa<br>Redes, telecomunicaciones, sistemas operativos, administración de servidores.</p>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2006</div>
+      <div>
+        <h4>Diseño Web — HTML y PHP</h4>
+        <p>Femxa<br>Desarrollo de páginas web, fundamentos de programación frontend.</p>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2001 – 2004</div>
+      <div>
+        <h4>Equipos e Instalaciones Electrotécnicas</h4>
+        <p>I.E.S. Herminio Almendros<br>Electrotecnia, instalaciones, fundamentos técnicos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════════════════ -->
+<footer>
+  <p>José Alberto Delicado · <a href="https://nodinkdigital.com">nodinkdigital.com</a></p>
+  <p><a href="mailto:jose@nodinkdigital.es">jose@nodinkdigital.es</a> · <a href="tel:+34666751545">+34 666 751 545</a> · Almansa, Albacete</p>
+</footer>
+
+</body>
+</html>
